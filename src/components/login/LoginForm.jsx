@@ -5,12 +5,14 @@ import { storageSave } from '../../utils/storage'
 import { useNavigate } from 'react-router-dom'
 import { useUser } from '../../context/UserContext'
 import { STORAGE_KEY_USER } from '../../const/storageKeys'
+import { Input, InputField, InputForm, InputButton, InputBox } from '../styles/Input.styled'
+import { BsKeyboard, BsArrowRight } from 'react-icons/bs'
 
 
 
 const userNameConfig = {
     required: true,
-    minLength: 2
+    minLength: 3
 }
 
 const LoginForm = () => {
@@ -58,32 +60,34 @@ const LoginForm = () => {
         }
 
         if (errors.username.type === 'minLength') {
-            return <span>Username is too short, min 2</span>
+            return <span>Username is too short, minimum 3 characters</span>
         }
     })()
 
-
+    const style = { marginLeft: "10px" }
     return (
         <>
-            <h2>What's your name?</h2>
-            <form onSubmit={ handleSubmit(onSubmit) }>
-                <fieldset>
-
-                    <label htmlFor='username'>Username: </label>
-                    <input
-                        type='text'
-                        placeholder='username'
-                        { ...register('username', userNameConfig) }
-                    />
-
-                    <button type='submit' disabled={ loading }>Login</button>
-
-                </fieldset>
-                { errorMessage }
+            <InputForm onSubmit={ handleSubmit(onSubmit) }>
+                <InputField>
+                    <InputBox>
+                        <BsKeyboard style={style} size={40}/>
+                        <Input
+                            type='text'
+                            placeholder='What is your name?'
+                            { ...register('username', userNameConfig) }
+                        />
+                        <InputButton type='submit' disabled={ loading }>
+                        <BsArrowRight size={40} color={"white"}/>
+                        </InputButton>
+                    </InputBox>
+                    { errorMessage }
+                </InputField>
+               
 
                 { loading && <p>Logging in...</p> }
                 { apiError && <p>{ apiError }</p> }
-            </form>
+            </InputForm>
+            
         </>
     );
 }

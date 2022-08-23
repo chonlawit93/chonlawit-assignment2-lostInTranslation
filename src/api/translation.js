@@ -33,7 +33,7 @@ export const translationClearHistory = async (userId) => {
     try {
         const response = await fetch(`${ apiURL }/${ userId }`, {
             method: 'PATCH',
-            headers: createHeaders,
+            headers: createHeaders(),
             body: JSON.stringify({
                 translations: []
             })

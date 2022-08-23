@@ -1,7 +1,9 @@
-import { NavLink } from "react-router-dom";
+
 import { STORAGE_KEY_USER } from "../../const/storageKeys";
 import { useUser } from "../../context/UserContext";
 import { storageDelete } from "../../utils/storage";
+import { Nav, NavTitleLogo, NavLink, NavMenu, NavBtnLogout, NavProfile, NavImage, NavTitle, } from "../styles/Navbar.styled"
+import { CgProfile } from "react-icons/cg"
 
 const Navbar = () => {
 
@@ -17,33 +19,30 @@ const Navbar = () => {
 
 
     return (
-        <nav>
-            <ul>
-                <li>Logo</li>
-                <li>Title</li>
-            </ul>
 
-            { user !== null &&
+        <Nav>
+            { user !== null ?
                 <>
-                    <ul>
-                        <li>
-                            <NavLink to="/translation">Translation</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="/profile">Profile</NavLink>
-                        </li>
-                        <li>
-                            <button onClick={ handleLogoutClick }>Logout</button>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>{user.username} + avatar</li>
-                    </ul>
+                    <NavTitleLogo>
+                        <NavImage src="/img/Logo.png" alt="nav logo" />
+                        <NavTitle>Lost in Traslation</NavTitle>
+                    </NavTitleLogo>
+                    <NavMenu>
+                        <NavLink to="/translation" >Translation</NavLink>
+                        <NavLink to="/profile" >Profile</NavLink>
+                        <NavBtnLogout onClick={ handleLogoutClick }>Logout</NavBtnLogout>
+                    </NavMenu>
 
-                </>
+                    <NavProfile>
+                        <p>{ user.username }</p>
+                        <CgProfile size={ 30 }></CgProfile>
+                    </NavProfile>
+                </> 
+                
+                :
+                <NavTitle>Lost in Traslation</NavTitle>
             }
-
-        </nav>
+        </Nav>
     );
 }
 

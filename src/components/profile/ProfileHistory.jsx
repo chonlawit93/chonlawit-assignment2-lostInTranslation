@@ -29,13 +29,15 @@ const ProfileHistory = ({ translations }) => {
         }
 
         storageSave(STORAGE_KEY_USER, updatedUser)
-        setUser(setUser)
+        setUser(updatedUser)
 
     }
 
     return (
         <section>
-            <h4>You order history</h4>
+            <h4>
+                { userTranslations.length === 0 ? 'No translation history:' : 'Your translation history:' }
+            </h4>
             <ul>
                 { userTranslations }
             </ul>
