@@ -6,6 +6,7 @@ import { BsKeyboard, BsArrowRight } from 'react-icons/bs'
 const inputConfig = {
     required: true,
     maxLength: 40,
+    pattern: /^[a-zA-Z\s]*$/
 }
 
 
@@ -26,21 +27,16 @@ const TranslationInput = ({ childClicked }) => {
         if (errors.inputText.type === 'maxLength') {
             return <span>Maksimum 40 letters</span>
         }
-
-
-        /*
-        // Error message if not matching regex. Only letters and spaces aloud 
-        
-        if (!inputText.value.match("/^[a-zA-Z\s]*$/")) {
-            return <span>I can only translate letters</span>
+        if(errors.inputText.type === 'pattern'){
+            return <span>Only letters and spaces</span>
         }
-          */
+        
     })()
-
+    console.log(errors);
 
     const onSubmit = ({ inputText }) => {
         // If string meets the requirement send data to parent
-
+      
         childClicked(inputText)
     }
 
