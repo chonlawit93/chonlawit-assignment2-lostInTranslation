@@ -1,8 +1,9 @@
 
 //import { useEffect } from "react";
 //import { getUserById } from "../api/user";
-import ProfileHeader from "../components/profile/ProfileHeader";
+
 import ProfileHistory from "../components/profile/ProfileHistory";
+import { ProfileContainer } from "../components/styles/Container.styled";
 //import { STORAGE_KEY_USER } from "../const/storageKeys";
 import { useUser } from "../context/UserContext";
 import withAuth from "../hoc/withAuth";
@@ -28,8 +29,10 @@ const Profile = () => {
 
     return (
         <>
-            <ProfileHeader username={ user.username } />
-            <ProfileHistory translations={ user.translations } />
+            <ProfileContainer>
+                <ProfileHistory translations={ user.translations } />
+            </ProfileContainer>
+
 
         </>
     );

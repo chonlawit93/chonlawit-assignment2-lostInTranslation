@@ -2,6 +2,8 @@ import { translationClearHistory } from "../../api/translation";
 import { STORAGE_KEY_USER } from "../../const/storageKeys";
 import { useUser } from "../../context/UserContext";
 import { storageSave } from "../../utils/storage";
+import { ClearButton } from "../styles/Button.styled";
+import { Notes } from "../styles/Container.styled";
 import ProfileTranslationList from "./ProfileTranslationList";
 
 
@@ -34,15 +36,15 @@ const ProfileHistory = ({ translations }) => {
     }
 
     return (
-        <section>
-            <h4>
+        <Notes>
+            <h3>
                 { userTranslations.length === 0 ? 'No translation history:' : 'Your translation history:' }
-            </h4>
+            </h3>
             <ul>
                 { userTranslations }
             </ul>
-            <button onClick={ handleClearClicked }>Clear history</button>
-        </section>
+            <ClearButton onClick={ handleClearClicked }>Clear history</ClearButton>
+        </Notes>
     );
 }
 

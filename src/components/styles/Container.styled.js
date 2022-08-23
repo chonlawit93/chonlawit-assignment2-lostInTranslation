@@ -35,3 +35,20 @@ export const OutPut = styled.div`
     border-bottom-width: 3rem;
     border-bottom-style: solid;
 `
+
+export const ProfileContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 100px
+`
+
+export const Notes = styled.section`
+    justify-items: center;
+    text-align: center;
+    line-height: 3rem;
+    background: rgba(239, 239, 239, 0.1);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    padding: 30px;
+`
