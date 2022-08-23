@@ -23,7 +23,7 @@ const createUser = async (username) => {
             headers: createHeaders(),
             body: JSON.stringify({
                 username,
-                orders: []
+                translations: []
             })
         })
         if (!response.ok) {
@@ -38,7 +38,7 @@ const createUser = async (username) => {
 
 export const loginUser = async (username) => {
     const [ checkError, user ] = await checkForUser(username)
-   
+
     if (checkError !== null) {
         return [ checkError, null ]
     }
@@ -48,4 +48,19 @@ export const loginUser = async (username) => {
     }
 
     return await createUser(username)
+}
+
+
+export const getUserById = async (userId) => {
+    try {
+        const response = await fetch(`${ apiURL }/${ userId }`)
+        if (!response.ok) {
+            throw new Error('Could not fetch user')
+        }
+        const user = await response.json()
+        return [ null, user ]
+
+    } catch (error) {
+        return (error.message, null)
+    }
 }
