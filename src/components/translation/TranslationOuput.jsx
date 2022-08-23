@@ -1,3 +1,4 @@
+import { OutPut } from "../styles/Container.styled";
 import Translations from "./Translations";
 
 
@@ -15,9 +16,9 @@ const TranslationOuput = ({ inputText }) => {
 
         return (
             <>
-                <div>
+                <OutPut>
                     { renderTranslation}
-                </div>
+                </OutPut>
             </>
         );
     }

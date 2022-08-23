@@ -5,7 +5,7 @@ import { storageSave } from '../../utils/storage'
 import { useNavigate } from 'react-router-dom'
 import { useUser } from '../../context/UserContext'
 import { STORAGE_KEY_USER } from '../../const/storageKeys'
-import { Input, InputField, InputForm, InputButton, InputBox } from '../styles/Input.styled'
+import { Input, InputField, InputForm, InputButton, InputBox, InputErrorMessage } from '../styles/Input.styled'
 import { BsKeyboard, BsArrowRight } from 'react-icons/bs'
 
 
@@ -70,24 +70,29 @@ const LoginForm = () => {
             <InputForm onSubmit={ handleSubmit(onSubmit) }>
                 <InputField>
                     <InputBox>
-                        <BsKeyboard style={style} size={40}/>
+                        <BsKeyboard style={ style } size={ 40 } />
                         <Input
                             type='text'
                             placeholder='What is your name?'
                             { ...register('username', userNameConfig) }
                         />
                         <InputButton type='submit' disabled={ loading }>
-                        <BsArrowRight size={40} color={"white"}/>
+                            <BsArrowRight size={ 40 } color={ "white" } />
                         </InputButton>
+
                     </InputBox>
-                    { errorMessage }
+
                 </InputField>
-               
+
 
                 { loading && <p>Logging in...</p> }
                 { apiError && <p>{ apiError }</p> }
             </InputForm>
-            
+            <InputErrorMessage>
+                { errorMessage }
+            </InputErrorMessage>
+
+
         </>
     );
 }

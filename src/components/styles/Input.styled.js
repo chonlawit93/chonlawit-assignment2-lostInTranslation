@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 
 export const InputField = styled.fieldset`
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 30px;
     height: 7rem;
     width: 80%;
@@ -9,7 +12,7 @@ export const InputField = styled.fieldset`
     border-bottom-width: 1rem;
     border-bottom-style: solid;
     filter: drop-shadow(0px 5px 5px rgba(0.25, 0.25, 0.25, 0.25));
-   
+ 
     
 `
 export const InputBox = styled.div`
@@ -20,9 +23,7 @@ export const InputBox = styled.div`
     border-color: grey;
     border-radius: 100px;
     justify-content: space-between;
-   
-    
-    
+    width: 80%;
 `
 
 export const Input = styled.input`
@@ -34,6 +35,7 @@ export const Input = styled.input`
         font-size: x-large;
         font-family: Sanchez;
     }
+   
     
     
     
@@ -64,4 +66,9 @@ export const InputForm = styled.form`
    
 `
 
+export const InputErrorMessage = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
 

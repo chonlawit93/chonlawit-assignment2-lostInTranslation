@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { translationAdd } from "../api/translation";
+import { OutPutContainer, TranslationContainer } from "../components/styles/Container.styled";
 import TranslationInput from "../components/translation/TranslationInput";
 import TranslationOuput from "../components/translation/TranslationOuput";
 import { STORAGE_KEY_USER } from "../const/storageKeys";
@@ -11,9 +12,9 @@ import { storageSave } from "../utils/storage";
 
 const Translation = () => {
 
-    const { user,setUser } = useUser()
+    const { user, setUser } = useUser()
     const [ inputText, setInputText ] = useState(null)
-    
+
 
     //Add input text to API
     const handleTranslationClicked = async (textValue) => {
@@ -25,22 +26,22 @@ const Translation = () => {
         }
 
         const [ error, updatedUser ] = await translationAdd(user, translation)
-        if(error !== null){
+        if (error !== null) {
             return
         }
 
         //Keep UI and server state in sync
-        storageSave(STORAGE_KEY_USER ,updatedUser)
+        storageSave(STORAGE_KEY_USER, updatedUser)
         //Update state
-        
+
         setUser(updatedUser)
         console.log('Error:', error)
         console.log('updatedUser:', updatedUser);
 
         // setState and send to output
-       
+
         setInputText(translation)
-        
+
 
     }
 
@@ -49,9 +50,14 @@ const Translation = () => {
     //TODO: Pass data from input to output component
     return (
         <>
-            <h1>Translation</h1>
-            <TranslationInput childClicked={ handleTranslationClicked } />
-            <TranslationOuput inputText={ inputText } />
+            <TranslationContainer>
+                <TranslationInput childClicked={ handleTranslationClicked } />
+            
+
+            </TranslationContainer>
+            <OutPutContainer>
+                <TranslationOuput inputText={ inputText } />
+            </OutPutContainer>
         </>
     );
 }

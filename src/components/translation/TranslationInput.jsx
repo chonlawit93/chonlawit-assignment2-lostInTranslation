@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form"
-
+import { Input, InputField, InputForm, InputButton, InputBox, InputErrorMessage } from "../styles/Input.styled"
+import { BsKeyboard, BsArrowRight } from 'react-icons/bs'
 
 
 const inputConfig = {
@@ -37,26 +38,31 @@ const TranslationInput = ({ childClicked }) => {
     })()
 
 
-    const onSubmit = ( {inputText} ) => {
+    const onSubmit = ({ inputText }) => {
         // If string meets the requirement send data to parent
 
         childClicked(inputText)
     }
 
 
+    const style = { marginLeft: "10px" }
     return (
         <>
-            <form onSubmit={ handleSubmit(onSubmit) }>
-                <fieldset>
-                    <input
+            <InputForm onSubmit={ handleSubmit(onSubmit) }>
+                <InputBox style={{ width: "50rem" ,  backgroundColor: "white" }}>
+                    <BsKeyboard style={ style } size={ 40 } />
+                    <Input
                         type='text'
-                        placeholder="hello world"
+                        placeholder="Hello world"
                         { ...register('inputText', inputConfig) }
                     />
-                    <button type='submit'>Translate</button>
-                </fieldset>
-                { errorMessage }
-            </form>
+                    <InputButton type='submit'>
+                        <BsArrowRight size={ 40 } color={ "white" } />
+                    </InputButton>
+                </InputBox>
+                
+            </InputForm>
+            <InputErrorMessage>{ errorMessage }</InputErrorMessage>
         </>
     );
 }
