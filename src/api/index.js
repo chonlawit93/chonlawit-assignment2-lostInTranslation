@@ -1,4 +1,4 @@
-const apiKey = process.env.REACT_APP_API_KEY
+const apiKey = "NAmrohG0xkeHxnwU/HGpow=="
 export const createHeaders = () => {
     return{
         'Content-Type': 'application/json',

@@ -1,6 +1,6 @@
 import { createHeaders } from "."
 
-const apiURL = process.env.REACT_APP_API_URL
+const apiURL = "https://chonlawit-assignment-api.herokuapp.com/translations"
 
 export const translationAdd = async (user, translation) => {
     try {
